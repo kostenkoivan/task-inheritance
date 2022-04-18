@@ -13,6 +13,18 @@ interface IStudentData extends IPersonData {
 2. Добавьте метод getData(), возвращающий объект, соответствующий интерфейсу IPersonData
  */
 export class Person {
+    constructor(data: IPersonData) {
+        this._name = data.name;
+        this._secondName = data.secondName;
+        this._age = data.age;
+    }
+    getData(): IPersonData {
+        return {
+            name: this._name,
+            secondName: this._secondName,
+            age: this._age,
+        };
+    }
     readonly _name: string;
     readonly _secondName: string;
     readonly _age: number;
@@ -23,5 +35,18 @@ export class Person {
 2. Добавьте метод getData(), возвращающий объект, соответствующий интерфейсу IStudentData
  */
 export class Student extends Person {
+    constructor(data: IStudentData) {
+        super(data);
+        this._phone = data.phone;
+    }
+    getData(): IStudentData {
+        return {
+            name: this._name,
+            secondName: this._secondName,
+            age: this._age,
+            phone: this._phone,
+        };
+    }
+
     readonly _phone: string;
 }
